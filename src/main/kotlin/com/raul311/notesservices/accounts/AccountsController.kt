@@ -5,27 +5,18 @@ import org.springframework.web.bind.annotation.*
 @RestController
 class AccountsController(private val accountsService: AccountsService) {
 
-    @GetMapping(value = ["/test"])
-    fun getAccounts(): List<Account> = listOf(
-            Account("test 4"),
-            Account("test 5"),
-            Account("test 6")
-    )
-
     @GetMapping
-    fun index(): List<Account> = accountsService.getAllAccounts()
+    fun getAllAccounts(): List<Account> = accountsService.getAllAccounts()
 
-    @PostMapping
-    fun post(@RequestBody account: Account) {
-        accountsService.insertAccount(account)
-    }
-
-    @GetMapping(value = ["/accounts/isValid/{name}"])
-    fun isValid(@PathVariable("name") name: String): Boolean = accountsService.accountExist(name)
+    @GetMapping(value = ["/accounts/isValid"])
+    fun isAccountValid(@RequestBody account: Account): Boolean = accountsService.accountExist(account)
 
     @PostMapping(value = ["/accounts/create"])
-//    fun create(@PathVariable("name") name: Account) = accountsService.insertAccount(name)
-    fun create(@RequestBody name: Account) = accountsService.insertAccount(name)
+    fun createAccount(@RequestBody accountName: String) = accountsService.insertAccount(accountName)
 
+    @PostMapping(value = ["/accounts/update"])
+    fun updateAccount(@RequestBody account: Account) = accountsService.updateAccount(account)
 
+    @PostMapping(value = ["/accounts/delete"])
+    fun deleteAccount(@RequestBody account: Account) = accountsService.deleteAccount(account)
 }

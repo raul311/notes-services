@@ -1,0 +1,15 @@
+### is Valid?
+GET http://localhost:8080/accounts/isValid
+Content-Type: application/json
+
+{
+  "name": "raul311"
+}
+
+### is Valid?
+GET http://localhost:8080/accounts/isValid
+Content-Type: application/json
+
+{
+  "name": "not valid"
+}

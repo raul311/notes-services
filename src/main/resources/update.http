@@ -1,0 +1,5 @@
+### Update
+POST http://localhost:8080/accounts/update
+Content-Type: application/json
+
+{"id":1,"name":"{\n  \"name\": \"raul ruiz\"\n}"}
